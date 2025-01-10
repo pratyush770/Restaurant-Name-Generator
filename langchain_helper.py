@@ -3,6 +3,8 @@ from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
 from langchain.schema.runnable import RunnableSequence
 import os
+import random
+import json
 
 sec_key = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = sec_key
@@ -15,22 +17,23 @@ llm = HuggingFaceEndpoint(
 
 
 def get_rest_name_and_items(cuisine):
+    themes = ["fast food", "family style", "buffet", "cafe", "bar", "eco-friendly"]  # randomly choose a theme
+    random_theme = random.choice(themes)
     question = f"Suggest a restaurant name for {cuisine} food and list some popular dishes."
     template = """
     Question: {question}
-    Provide the output strictly in the following JSON format without any extra text or indentation issues and give 8 menu_items:
+    Provide the output strictly in the following JSON format without any extra text or indentation issues. The restaurant name and dishes should align with the given theme: {random_theme}. Give 8 menu_items:
     {{
-        "rest_name": "Your restaurant name here",
-        "menu_items": ["Dish 1", "Dish 2", "Dish 3"]
+        "rest_name": "Themed restaurant name here",
+        "menu_items": ["Themed Dish 1", "Themed Dish 2", "Themed Dish 3"]
     }}
     """
-    prompt = PromptTemplate(template=template, input_variables=["question"])
+    prompt = PromptTemplate(template=template, input_variables=["question", "random_theme"])
     sequence = RunnableSequence(first=prompt, last=llm)
-    response = sequence.invoke({"question": question})
+    response = sequence.invoke({"question": question, "random_theme": random_theme})
+
     try:
-        # Parse the response into a dictionary
-        import json
-        response_dict = json.loads(response)  # convert the json response into python dict
+        response_dict = json.loads(response)  # convert the JSON response into a Python dict
         return response_dict
     except json.JSONDecodeError as e:
         print(f"JSON parsing error: {e}")
