@@ -1,9 +1,10 @@
-from secret_key import sec_key
+import streamlit as st
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
 from langchain.schema.runnable import RunnableSequence
 import os
 
+sec_key = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = sec_key
 
 repo_id = "mistralai/Mistral-7B-Instruct-v0.3"
