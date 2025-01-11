@@ -1,3 +1,4 @@
+## Restaurant Name Generator
 This project leverages the power of Generative AI to create unique restaurant names and corresponding menu items. Built using **Python**, **Langchain**, and **Streamlit**, the application provides a seamless and interactive experience for users.
 
 ## Features  
