@@ -16,4 +16,4 @@ This project leverages the power of Generative AI to create unique restaurant na
 ## Deployment  
 
 The application is deployed on **Streamlit** and is accessible via the following link:  
-👉 [Live Demo] https://restaurant-name-generator-123.streamlit.app/
+[Live Demo] https://restaurant-name-generator-123.streamlit.app/
