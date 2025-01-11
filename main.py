@@ -1,10 +1,7 @@
 import streamlit as st
 import langchain_helper as l
 
-# Set up the app title
 st.title("Restaurant Name Generator")
-
-# Sidebar for cuisine selection
 cuisine = st.sidebar.selectbox(
     "Pick a cuisine",
     ("Select a cuisine", "Indian", "Mexican", "Chinese", "Italian", "Japanese", "French", "Korean")
