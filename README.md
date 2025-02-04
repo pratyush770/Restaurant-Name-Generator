@@ -3,13 +3,15 @@ This project leverages the power of Generative AI to create unique restaurant na
 
 ## Features  
 
-- Generate creative and unique restaurant names.  
+- Generate creative and unique restaurant names.
+  
 - Suggest menu items tailored to the restaurant's theme.  
 - Interactive web interface for a user-friendly experience.
 
 ## Technologies Used  
 
-- **Python**: Core programming language for the application.  
+- **Python**: Core programming language for the application.
+  
 - **Langchain**: Advanced language processing for generating names and menu items.  
 - **Streamlit**: Framework for deploying the web application.
 
